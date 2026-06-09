@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Government Boys Senior Secondary School</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans&display=swap" rel="stylesheet" />
+
+<style>
+  body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0; padding: 0;
+    color: #0fe7ff;
+    line-height: 1.6;
+  }
+  header, footer {
+    background-color: rgba(43, 230, 255, 0.85);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1.2em 0;
+    font-weight: 600;
+  }
+  nav {
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    padding: 0.8em 0;
+  }
+  nav a {
+    color: rgb(255, 255, 255);
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15em;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    text-decoration: underline;
+    color: #a3cef1;
+  }
+  #main-content {
+    max-width: 1000px;
+    margin: 2em auto;
+    background: rgba(15, 213, 239, 0.95);
+    padding: 2em 3em;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;  /* Initially hidden, shown after login */
+  }
+  section {
+    margin-bottom: 3em;
+  }
+  h1, h2, h3 {
+    font-family: 'Lora', serif;
+    color: #000000;
+    margin-bottom: 0.5em;
+  }
+  p, ul {
+    font-size: 1.1em;
+    color: #000000;
+  }
+  ul {
+    padding-left: 25px;
+    list-style-type: circle;
+  }
+  .faculty-list img {
+    width: 110px;
+    border-radius: 50%;
+    margin: 0.7em;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+  .faculty-list img:hover {
+    transform: scale(1.1);
+  }
+  #faculty p {
+    font-family: 'Lora', serif;
+    font-size: 1.05em;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0.6em 0;
+    color: #000000;
+  }
+  #events > div img {
+    width: 320px;
+    margin: 0.7em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  }
+  #events p.event-desc {
+    font-style: italic;
+    color: #000000;
+    margin-top: 0.3em;
+    margin-bottom: 1.2em;
+    font-size: 1.05em;
+  }
+  #login-section, #otp-section, #set-credentials, #welcome-section {
+    max-width: 370px;
+    margin: 3em auto;
+    padding: 1.5em 2em;
+    background: rgba(7, 238, 255, 0.95);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(5, 4, 4, 0.966);
+  }
+  input[type="tel"], input[type="text"], input[type="password"] {
+    width: 92%;
+    padding: 0.55em;
+    font-size: 1.1em;
+    margin: 0.5em 0 1em 0;
+    border-radius: 6px;
+    border: 1.2px solid #0c0707;
+    transition: border-color 0.3s ease;
+  }
+  input[type="tel"]:focus, input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #47c8ff;
+    outline: none;
+  }
+  button {
+    cursor: pointer;
+    background-color: #25deff;
+    border: none;
+    color: rgb(8, 7, 7);
+    padding: 0.75em 2em;
+    border-radius: 6px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #ffffff;
+  }
+  #language-selector {
+    margin-top: 10px;
+  }
+  #language-selector button {
+    margin: 0 5px;
+    font-weight: 700;
+  }
+  .lang-hi {
+    display: none;
+  }
+  a.notes-link {
+    font-weight: 600;
+    color: #3fcaf0;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  a.notes-link:hover {
+    text-decoration: underline;
+  }
+  #createdBy {
+    font-family: 'Lora', serif;
+    font-weight: 900;
+    font-size: 1.4em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 0.6em 0;
+    background-color: rgba(52, 225, 255, 0.85);
+    text-shadow: 1px 1px 2px black;
+  }
+</style>
+</head>
+<body>
+
+<div id="createdBy">CREATED BY INNOVATORS CIRCLE</div>
+
+<header>
+  <h1>
+    <span class="lang-en">GOVERNMENT BOYS SENIOR SECONDARY SCHOOL</span>
+    <span class="lang-hi" style="display:none;">सरकारी बालक उच्चतर माध्यमिक विद्यालय</span>
+  </h1>
+  <p>
+    <span class="lang-en">Your Pathway to Quality Education</span>
+    <span class="lang-hi" style="display:none;">आपकी गुणवत्तापूर्ण शिक्षा की ओर मार्ग</span>
+  </p>
+  <div id="language-selector">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('hi')">हिंदी</button>
+  </div>
+</header>
+
+<nav>
+  <a href="#home" class="lang-en">Home</a><a href="#home" class="lang-hi" style="display:none;">होम</a>
+  <a href="#programs" class="lang-en">Programs</a><a href="#programs" class="lang-hi" style="display:none;">कार्यक्रम</a>
+  <a href="#subjects" class="lang-en">Subjects</a><a href="#subjects" class="lang-hi" style="display:none;">विषय</a>
+  <a href="#notes-section" class="lang-en">Notes</a><a href="#notes-section" class="lang-hi" style="display:none;">नोट्स</a>
+  <a href="#faculty" class="lang-en">Faculty</a><a href="#faculty" class="lang-hi" style="display:none;">शिक्षक</a>
+  <a href="#events" class="lang-en">Events</a><a href="#events" class="lang-hi" style="display:none;">कार्यक्रम</a>
+  <a href="#contact" class="lang-en">Contact</a><a href="#contact" class="lang-hi" style="display:none;">संपर्क करें</a>
+</nav>
+
+<section id="login-section">
+  <h2><span class="lang-en">Login with Mobile Number</span><span class="lang-hi" style="display:none;">मोबाइल नंबर से लॉगिन करें</span></h2>
+  <input type="tel" id="mobileNumber" placeholder="Enter 10-digit mobile number" maxlength="10" />
+  <br/>
+  <button id="sendOTPBtn"><span class="lang-en">Send OTP</span><span class="lang-hi" style="display:none;">OTP भेजें</span></button>
+</section>
+
+<section id="otp-section" style="display:none;">
+  <input type="text" id="otp" placeholder="Enter OTP here" maxlength="6" />
+  <br/>
+  <button id="verifyOTPBtn"><span class="lang-en">Verify OTP</span><span class="lang-hi" style="display:none;">OTP सत्यापित करें</span></button>
+</section>
+
+<section id="set-credentials" style="display:none;">
+  <input type="text" id="username" placeholder="Set your username" />
+  <br/>
+  <input type="password" id="password" placeholder="Set your password" />
+  <br/>
+  <button id="setCredentialsBtn"><span class="lang-en">Create Account</span><span class="lang-hi" style="display:none;">खाता बनाएं</span></button>
+</section>
+
+<section id="welcome-section" style="display:none;">
+  <h2><span class="lang-en">Welcome!</span><span class="lang-hi" style="display:none;">स्वागत है!</span></h2>
+  <p><span class="lang-en">You have successfully logged in.</span><span class="lang-hi" style="display:none;">आप सफलतापूर्वक लॉगिन हो गए हैं।</span></p>
+</section>
+
+<div id="main-content">
+  <section id="home">
+    <h2><span class="lang-en">Welcome to Government Boys Senior Secondary School</span><span class="lang-hi" style="display:none;">सरकारी बालक उच्चतर माध्यमिक विद्यालय में आपका स्वागत है</span></h2>
+    <p><span class="lang-en">Our institution is dedicated to providing quality education and a nurturing environment. Here you will find information on our courses, faculty, and upcoming events.</span><span class="lang-hi" style="display:none;">हमारा संस्थान गुणवत्तापूर्ण शिक्षा और पोषण करने वाला वातावरण प्रदान करने के लिए समर्पित है। यहां आपको हमारे पाठ्यक्रमों, शिक्षकों और आगामी कार्यक्रमों की जानकारी मिलेगी।</span></p>
+  </section>
+
+  <section id="programs">
+    <h2><span class="lang-en">Academic Programs for 11th Grade</span><span class="lang-hi" style="display:none;">ग्यारहवीं कक्षा के लिए शैक्षणिक कार्यक्रम</span></h2>
+    <p><span class="lang-en">We offer full streams under Arts, Science, and Commerce for 11th grade students to choose from, preparing them for their career paths.</span><span class="lang-hi" style="display:none;">हम ग्यारहवीं कक्षा के छात्रों के लिए कला, विज्ञान और वाणिज्य की पूरी धाराएँ प्रदान करते हैं, जो उन्हें उनके करियर पथ के लिए तैयार करती हैं।</span></p>
+  </section>
+
+  <section id="subjects">
+    <h2><span class="lang-en">Subjects Offered</span><span class="lang-hi" style="display:none;">प्रस्तावित विषय</span></h2>
+
+    <h3><span class="lang-en">Arts Stream</span><span class="lang-hi" style="display:none;">कला धारा</span></h3>
+    <ul>
+      <li>History <a href="#notes-history" class="notes-link lang-en">Notes</a><a href="#notes-history" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Political Science <a href="#notes-political" class="notes-link lang-en">Notes</a><a href="#notes-political" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Geography <a href="#notes-geography" class="notes-link lang-en">Notes</a><a href="#notes-geography" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Psychology <a href="#notes-psychology" class="notes-link lang-en">Notes</a><a href="#notes-psychology" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Economics <a href="#notes-economics" class="notes-link lang-en">Notes</a><a href="#notes-economics" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>English <a href="#notes-english" class="notes-link lang-en">Notes</a><a href="#notes-english" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+    </ul>
+
+    <h3><span class="lang-en">Science Stream</span><span class="lang-hi" style="display:none;">विज्ञान धारा</span></h3>
+    <ul>
+      <li>Physics <a href="#notes-physics" class="notes-link lang-en">Notes</a><a href="#notes-physics" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Chemistry <a href="#notes-chemistry" class="notes-link lang-en">Notes</a><a href="#notes-chemistry" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Mathematics <a href="#notes-maths" class="notes-link lang-en">Notes</a><a href="#notes-maths" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Biology <a href="#notes-biology" class="notes-link lang-en">Notes</a><a href="#notes-biology" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Computer Science <a href="#notes-computer" class="notes-link lang-en">Notes</a><a href="#notes-computer" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+    </ul>
+
+    <h3><span class="lang-en">Commerce Stream</span><span class="lang-hi" style="display:none;">वाणिज्य धारा</span></h3>
+    <ul>
+      <li>Accountancy <a href="#notes-accountancy" class="notes-link lang-en">Notes</a><a href="#notes-accountancy" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Business Studies <a href="#notes-business" class="notes-link lang-en">Notes</a><a href="#notes-business" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Economics <a href="#notes-economics" class="notes-link lang-en">Notes</a><a href="#notes-economics" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>Mathematics <a href="#notes-maths" class="notes-link lang-en">Notes</a><a href="#notes-maths" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+      <li>English <a href="#notes-english" class="notes-link lang-en">Notes</a><a href="#notes-english" class="notes-link lang-hi" style="display:none;">नोट्स</a></li>
+    </ul>
+  </section>
+
+  <!-- Notes Section -->
+  <section id="notes-section">
+    <h2><span class="lang-en">Subject Notes</span><span class="lang-hi" style="display:none;">विषय नोट्स</span></h2>
+
+    <section id="notes-history">
+      <h3><span class="lang-en">History Notes</span><span class="lang-hi" style="display:none;">इतिहास नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/history-chapter1.pdf" target="_blank" class="lang-en">Ancient India - Chapter 1</a><a href="notes-hi/history-chapter1.pdf" target="_blank" class="lang-hi" style="display:none;">प्राचीन भारत - अध्याय 1</a></li>
+        <li><a href="notes/history-chapter2.pdf" target="_blank" class="lang-en">Medieval Period - Chapter 2</a><a href="notes-hi/history-chapter2.pdf" target="_blank" class="lang-hi" style="display:none;">मध्यकालीन काल - अध्याय 2</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-political">
+      <h3><span class="lang-en">Political Science Notes</span><span class="lang-hi" style="display:none;">राजनीति विज्ञान नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/political-chapter1.pdf" target="_blank" class="lang-en">Introduction to Political Science</a><a href="notes-hi/political-chapter1.pdf" target="_blank" class="lang-hi" style="display:none;">राजनीति विज्ञान परिचय</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-physics">
+  <h3><span class="lang-en">Physics Notes</span><span class="lang-hi" style="display:none;">[:भौतिकी नोट्स]</span></h3>
+  <ul>
+    <li><a href="ch_1_physics.pdf" target="_blank" class="lang-en">CH 1 Units and Measurements</a><a href="ch_1_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_2_physics.pdf" target="_blank" class="lang-en">CH 2 Motion in a straight line</a><a href="ch_2_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_3_physics.pdf" target="_blank" class="lang-en">CH 3 Motion in a plane</a><a href="ch_3_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_4_physics.pdf" target="_blank" class="lang-en">CH 4 Laws of Motion</a><a href="ch_4_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_5_physics.pdf" target="_blank" class="lang-en">CH 5 Work, Energy And Power</a><a href="ch_5_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_6_physics.pdf" target="_blank" class="lang-en">CH 6 Systems of Particles and Rotational Motion</a><a href="ch_6_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_7_phy.pdf" target="_blank" class="lang-en">CH 7 Gravitation</a><a href="ch_7_phy.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_8_phy.pdf" target="_blank" class="lang-en">CH 8 Mechanical Properties of Solids</a><a href="ch_8_phy.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_9_phy.pdf" target="_blank" class="lang-en">CH 9 Mechanical Properties of Fluids</a><a href="ch_9_phy.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_10_phy.pdf" target="_blank" class="lang-en">CH 10 Thermal Properties of Matter</a><a href="ch_10_phy.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_11_physics.pdf" target="_blank" class="lang-en">CH 11 ThermoDynamics</a><a href="ch_11_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_12_phy.pdf" target="_blank" class="lang-en">CH 12 Kinetic Theory</a><a href="ch_12_phy.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_13_phy.pdf" target="_blank" class="lang-en">CH 13 Oscillation </a><a href="ch_13_phy.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+    <li><a href="ch_14_physics.pdf" target="_blank" class="lang-en">CH 14 waves</a><a href="ch_14_physics.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:सीधी रेखा में गति]</a></li>
+  </ul>
+</section>
+
+      
+    <section id="notes-chemistry">
+  <h3><span class="lang-en">Chemistry Notes</span><span class="lang-hi" style="display:none;">[रसायन विज्ञान नोट्स]</span></h3>
+  <ul>
+    <li><a href="1_chem.pdf" target="_blank" class="lang-en">Chapter 1: Some Basic Concepts of Chemistry</a><a href="1_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 1: रसायन विज्ञान की कुछ बुनियादी अवधारणाएँ]</a></li>
+    <li><a href="2_chem.pdf" target="_blank" class="lang-en">Chapter 2: Structure of Atom</a><a href="2_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 2: परमाणु की संरचना]</a></li>
+    <li><a href="3_chem.pdf" target="_blank" class="lang-en">Chapter 3: Classification of Elements and Periodicity in Properties</a><a href="3_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 3: तत्वों का वर्गीकरण और गुणों में आवर्तिता]</a></li>
+    <li><a href="4_chem.pdf" target="_blank" class="lang-en">Chapter 4: Chemical Bonding and Molecular Structure</a><a href="4_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 4: रासायनिक बंधन और आण्विक संरचना]</a></li>
+    <li><a href="5_chem.pdf" target="_blank" class="lang-en">Chapter 5: States of Matter: Gases and Liquids</a><a href="5_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 5: पदार्थ के अवस्थाएँ: गैस और द्रव]</a></li>
+    <li><a href="6_chem.pdf" target="_blank" class="lang-en">Chapter 6: Thermodynamics</a><a href="6_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 6: ऊष्मागतिकी]</a></li>
+    <li><a href="7_chem.pdf" target="_blank" class="lang-en">Chapter 7: Equilibrium</a><a href="7_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 7: संतुलन]</a></li>
+    <li><a href="8_chem.pdf" target="_blank" class="lang-en">Chapter 8: Redox Reactions</a><a href="8_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 8: अभिक्रिया और अपचयन प्रतिक्रियाएँ]</a></li>
+    <li><a href="9_chem.pdf" target="_blank" class="lang-en">Chapter 9: Hydrocarbons</a><a href="9_chem.pdf" target="_blank" class="lang-hi" style="display:none;">[अध्याय 9: हाइड्रोजन]</a></li>
+  </ul>
+</section>
+
+
+    <section id="notes-maths">
+      <h3><span class="lang-en">Mathematics Notes</span><span class="lang-hi" style="display:none;">गणित नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/maths-chapter1.pdf" target="_blank" class="lang-en">Sets and Relations</a><a href="notes-hi/maths-chapter1.pdf" target="_blank" class="lang-hi" style="display:none;">समुच्चय और सम्बन्ध</a></li>
+      </ul>
+    </section>
+
+   <section id="notes-biology">
+  <h3><span class="lang-en">Biology Notes</span><span class="lang-hi" style="display:none;">[translate:जीव विज्ञान नोट्स]</span></h3>
+  <ul>
+    <li><a href="ch_1_bio.pdf" target="_blank" class="lang-en">Chapter 1: The Living World</a><a href="ch_1_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 1: जीव जगत]</a></li>
+    <li><a href="ch_2_bio.pdf" target="_blank" class="lang-en">Chapter 2: Biological Classification</a><a href="ch_2_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 2: जैविक वर्गीकरण]</a></li>
+    <li><a href="ch_3_bio.pdf" target="_blank" class="lang-en">Chapter 3: Plant Kingdom</a><a href="ch_3_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 3: पौधा जगत]</a></li>
+    <li><a href="ch_4_bio.pdf" target="_blank" class="lang-en">Chapter 4: Animal Kingdom</a><a href="ch_4_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 4: पशु जगत]</a></li>
+    <li><a href="ch_5_bio.pdf" target="_blank" class="lang-en">Chapter 5: Morphology of Flowering Plants</a><a href="ch_5_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 5: पुष्पीय पौधों की आकृति विज्ञान]</a></li>
+    <li><a href="ch_6_bio.pdf" target="_blank" class="lang-en">Chapter 6: Anatomy of Flowering Plants</a><a href="ch_6_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 6: पुष्पीय पौधों की शारीरिक रचना]</a></li>
+    <li><a href="ch_7_bio.pdf" target="_blank" class="lang-en">Chapter 7: Structural Organisation in Animals</a><a href="notes-hi/biology-ch7.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 7: जीवों में संरचनात्मक संगठन]</a></li>
+    <li><a href="ch_8_bio.pdf" target="_blank" class="lang-en">Chapter 8: Cell Structure and Function</a><a href="notes-hi/biology-ch8.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 8: कोशिका संरचना और क्रिया]</a></li>
+    <li><a href="ch_9_bio.pdf" target="_blank" class="lang-en">Chapter 9: Biomolecules</a><a href="ch_9_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 9: जैव अणु]</a></li>
+    <li><a href="ch_10_bio.pdf" target="_blank" class="lang-en">Chapter 10: Cell Cycle and Cell Division</a><a href="ch_10_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 10: कोशिका चक्र और कोशिका विभाजन]</a></li>
+    <li><a href="ch_11_bio.pdf" target="_blank" class="lang-en">Chapter 11: Transport in Plants</a><a href="ch_11_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 11: पौधों में परिवहन]</a></li>
+    <li><a href="ch_12_bio.pdf" target="_blank" class="lang-en">Chapter 12: Mineral Nutrition</a><a href="ch_12_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 12: खनिज पोषण]</a></li>
+    <li><a href="ch_13_bio.pdf" target="_blank" class="lang-en">Chapter 13: Photosynthesis in Higher Plants</a><a href="ch_13_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 13: उच्च पौधों में प्रकाश संश्लेषण]</a></li>
+    <li><a href="ch_14_bio.pdf" target="_blank" class="lang-en">Chapter 14: Respiration in Plants</a><a href="ch_14_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 14: पौधों में श्वसन]</a></li>
+    <li><a href="ch_15_bio.pdf" target="_blank" class="lang-en">Chapter 15: Plant Growth and Development</a><a href="ch_15_bio.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 15: पौधों की वृद्धि और विकास]</a></li>
+  </ul>
+</section>
+
+
+    <section id="notes-accountancy">
+      <h3><span class="lang-en">Accountancy Notes</span><span class="lang-hi" style="display:none;">लेखाशास्त्र नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/accountancy-ch1.pdf" target="_blank" class="lang-en">Introduction to Accountancy</a><a href="notes-hi/accountancy-ch1.pdf" target="_blank" class="lang-hi" style="display:none;">लेखाशास्त्र परिचय</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-business">
+      <h3><span class="lang-en">Business Studies Notes</span><span class="lang-hi" style="display:none;">व्यवसाय अध्ययन नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/business-ch1.pdf" target="_blank" class="lang-en">Business Environment</a><a href="notes-hi/business-ch1.pdf" target="_blank" class="lang-hi" style="display:none;">व्यवसाय पर्यावरण</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-economics">
+      <h3><span class="lang-en">Economics Notes</span><span class="lang-hi" style="display:none;">अर्थशास्त्र नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/economics-ch1.pdf" target="_blank" class="lang-en">Introduction to Economics</a><a href="notes-hi/economics-ch1.pdf" target="_blank" class="lang-hi" style="display:none;">अर्थशास्त्र परिचय</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-english">
+      <h3><span class="lang-en">English Notes</span><span class="lang-hi" style="display:none;">अंग्रेज़ी नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/english-ch1.pdf" target="_blank" class="lang-en">Grammar Basics</a><a href="notes-hi/english-ch1.pdf" target="_blank" class="lang-hi" style="display:none;">व्याकरण मूल बातें</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-psychology">
+      <h3><span class="lang-en">Psychology Notes</span><span class="lang-hi" style="display:none;">मनोविज्ञान नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/psychology-ch1.pdf" target="_blank" class="lang-en">Introduction to Psychology</a><a href="notes-hi/psychology-ch1.pdf" target="_blank" class="lang-hi" style="display:none;">मनोविज्ञान परिचय</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-geography">
+      <h3><span class="lang-en">Geography Notes</span><span class="lang-hi" style="display:none;">भूगोल नोट्स</span></h3>
+      <ul>
+        <li><a href="notes/geography-ch1.pdf" target="_blank" class="lang-en">Physical Geography</a><a href="notes-hi/geography-ch1.pdf" target="_blank" class="lang-hi" style="display:none;">भौतिक भूगोल</a></li>
+      </ul>
+    </section>
+
+    <section id="notes-computer">
+  <h3><span class="lang-en">Computer Science Notes</span><span class="lang-hi" style="display:none;">[translate:कंप्यूटर विज्ञान नोट्स]</span></h3>
+  <ul>
+    <li><a href="cs_ch_1.pdf" target="_blank" class="lang-en">Chapter 1: Introduction to Computer</a><a href="cs_ch_1.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 1: कंप्यूटर का परिचय]</a></li>
+    <li><a href="cs_ch_2.pdf" target="_blank" class="lang-en">Chapter 2: Computer System and Organization</a><a href="cs_ch_2.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 2: कंप्यूटर सिस्टम और संगठन]</a></li>
+    <li><a href="cs_ch_3.pdf" target="_blank" class="lang-en">Chapter 3: Input and Output Devices</a><a href="notes-hi/computer-ch3.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 3: इनपुट और आउटपुट उपकरण]</a></li>
+    <li><a href="cs_ch_4.pdf" target="_blank" class="lang-en">Chapter 4: Memory Units</a><a href="notes-hi/computer-ch4.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 4: मेमोरी यूनिट्स]</a></li>
+    <li><a href="cs_ch_5.pdf" target="_blank" class="lang-en">Chapter 5: Software</a><a href="notes-hi/computer-ch5.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 5: सॉफ्टवेयर]</a></li>
+    <li><a href="cs_ch_6.pdf" target="_blank" class="lang-en">Chapter 6: Operating System</a><a href="notes-hi/computer-ch6.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 6: ऑपरेटिंग सिस्टम]</a></li>
+    <li><a href="cs_ch_7.pdf" target="_blank" class="lang-en">Chapter 7: Data Representation</a><a href="notes-hi/computer-ch7.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 7: डेटा प्रस्तुतिकरण]</a></li>
+    <li><a href="cs_ch_8.pdf" target="_blank" class="lang-en">Chapter 8: Networking Basics</a><a href="notes-hi/computer-ch8.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 8: नेटवर्किंग बेसिक्स]</a></li>
+    <li><a href="cs_ch_9.pdf" target="_blank" class="lang-en">Chapter 9: Internet and Web Services</a><a href="notes-hi/computer-ch9.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 9: इंटरनेट और वेब सेवाएँ]</a></li>
+    <li><a href="cs_ch_10.pdf" target="_blank" class="lang-en">Chapter 10: Database Management</a><a href="notes-hi/computer-ch10.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 10: डेटाबेस प्रबंधन]</a></li>
+    <li><a href="cs_ch_11.pdf" target="_blank" class="lang-en">Chapter 11: Programming Basics</a><a href="notes-hi/computer-ch11.pdf" target="_blank" class="lang-hi" style="display:none;">[translate:अध्याय 11: प्रोग्रामिंग मूल बातें]</a></li>
+  </ul>
+</section>
+
+  <section id="faculty">
+    <h2><span class="lang-en">Our Dedicated Teachers</span><span class="lang-hi" style="display:none;">हमारे समर्पित शिक्षक</span></h2>
+    <p><span class="lang-en">At Government Boys Senior Secondary School, our teachers are passionate, experienced, and committed to nurturing every student's potential. They bring years of expertise across various subjects, employing interactive and student-centered teaching methods.</span>
+      <span class="lang-hi" style="display:none;">सरकारी बालक उच्चतर माध्यमिक विद्यालय में, हमारे शिक्षक उत्साही, अनुभवी हैं और प्रत्येक छात्र की क्षमता को विकसित करने के लिए प्रतिबद्ध हैं। वे विभिन्न विषयों में वर्षों का अनुभव लाते हैं और संवादात्मक व छात्र-केंद्रित शिक्षण पद्धतियों का उपयोग करते हैं।</span></p>
+    <p><span class="lang-en">Our faculty focuses not only on academic excellence but also on fostering critical thinking, creativity, and moral values among students. Regular training programs help keep them updated with the latest educational practices and technology integration in classrooms.</span>
+    <span class="lang-hi" style="display:none;">हमारा संकाय केवल शैक्षणिक उत्कृष्टता पर ही नहीं, बल्कि छात्रों में समालोचनात्मक सोच, रचनात्मकता और नैतिक मूल्यों को बढ़ावा देने पर भी ध्यान केंद्रित करता है। नियमित प्रशिक्षण कार्यक्रम उन्हें नवीनतम शिक्षा पद्धतियों और कक्षा में तकनीकी एकीकरण के साथ अपडेट रखते हैं।</span></p>
+    <div class="faculty-list">
+      <img src="teacher1.jpg" alt="Teacher 1" />
+      <img src="teacher2.jpg" alt="Teacher 2" />
+      <img src="teacher3.jpg" alt="Teacher 3" />
+    </div>
+  </section>
+
+  <section id="events">
+    <h2><span class="lang-en">Upcoming Events</span><span class="lang-hi" style="display:none;">आगामी कार्यक्रम</span></h2>
+
+    <div id="sports-day">
+      <h3><span class="lang-en">Sports Day</span><span class="lang-hi" style="display:none;">खेल दिवस</span></h3>
+      <ul>
+        <li><span class="lang-en">December 10, 2025</span><span class="lang-hi" style="display:none;">10 दिसंबर, 2025</span></li>
+      </ul>
+      <p class="event-desc"><span class="lang-en">Our annual Sports Day encourages teamwork, fitness, and competitive spirit through a variety of games and activities.</span><span class="lang-hi" style="display:none;">हमारा वार्षिक खेल दिवस टीमवर्क, फिटनेस, और प्रतिस्पर्धात्मक भावना को विभिन्न खेल और गतिविधियों के माध्यम से बढ़ावा देता है।</span></p>
+      <div>
+        <img src="sports1.jpeg" alt="Sports Day Event Photo 1" />
+        <img src="sports2.jpeg" alt="Sports Day Event Photo 2" />
+      </div>
+    </div>
+
+    <div id="cultural-day">
+      <h3><span class="lang-en">Cultural Day</span><span class="lang-hi" style="display:none;">सांस्कृतिक दिवस</span></h3>
+      <ul>
+        <li><span class="lang-en">January 15, 2026</span><span class="lang-hi" style="display:none;">15 जनवरी, 2026</span></li>
+      </ul>
+      <p class="event-desc"><span class="lang-en">Cultural Day celebrates our rich heritage through music, dance, art, and drama performances by our talented students.</span><span class="lang-hi" style="display:none;">सांस्कृतिक दिवस संगीत, नृत्य, कला, और नाटक प्रस्तुतियों के माध्यम से हमारी समृद्ध विरासत का जश्न मनाता है, जो हमारे प्रतिभाशाली छात्रों द्वारा प्रस्तुत की जाती हैं।</span></p>
+      <div>
+        <img src="cu1.jpeg" alt="Cultural Day Event Photo 1" />
+        <img src="cu2.jpeg" alt="Cultural Day Event Photo 2" />
+      </div>
+    </div>
+
+    <div id="science-day">
+      <h3><span class="lang-en">Science Day</span><span class="lang-hi" style="display:none;">विज्ञान दिवस</span></h3>
+      <ul>
+        <li><span class="lang-en">February 20, 2026</span><span class="lang-hi" style="display:none;">20 फरवरी, 2026</span></li>
+      </ul>
+      <p class="event-desc"><span class="lang-en">Science Day inspires innovation and curiosity with exhibits, experiments, and interactive sessions led by students and teachers.</span><span class="lang-hi" style="display:none;">विज्ञान दिवस प्रदर्शनी, प्रयोग और इंटरैक्टिव सत्रों के साथ नवाचार और जिज्ञासा को प्रेरित करता है, जो छात्रों और शिक्षकों द्वारा संचालित होते हैं।</span></p>
+      <div>
+        <img src="science1.jpeg" alt="Science Day Event Photo 1" />
+        <img src="science2.jpeg" alt="Science Day Event Photo 2" />
+      </div>
+    </div>
+
+    <div id="republic-day">
+      <h3><span class="lang-en">Republic Day</span><span class="lang-hi" style="display:none;">गणतन्त्र दिवस</span></h3>
+      <ul>
+        <li><span class="lang-en">January 26, 2026</span><span class="lang-hi" style="display:none;">26 जनवरी, 2026</span></li>
+      </ul>
+      <p class="event-desc"><span class="lang-en">Republic Day celebrates the adoption of the Indian Constitution and honors the nation's rich democratic heritage.</span><span class="lang-hi" style="display:none;">गणतन्त्र दिवस भारतीय संविधान को अपनाने का जश्न मनाता है और देश की समृद्ध लोकतांत्रिक विरासत को सम्मानित करता है।</span></p>
+      <div>
+        <img src="republic1.jpeg" alt="Republic Day Event Photo 1" />
+        <img src="republic2.jpeg" alt="Republic Day Event Photo 2" />
+      </div>
+    </div>
+
+    <div id="independence-day">
+      <h3><span class="lang-en">Independence Day</span><span class="lang-hi" style="display:none;">स्वतंत्रता दिवस</span></h3>
+      <ul>
+        <li><span class="lang-en">August 15, 2026</span><span class="lang-hi" style="display:none;">15 अगस्त, 2026</span></li>
+      </ul>
+      <p class="event-desc"><span class="lang-en">Independence Day marks the freedom of India from British rule and is celebrated with patriotic fervor across the country.</span><span class="lang-hi" style="display:none;">स्वतंत्रता दिवस ब्रिटिश शासन से भारत की आज़ादी का प्रतीक है और पूरे देश में देशभक्ति के साथ मनाया जाता है।</span></p>
+      <div>
+        <img src="indenpence1.jpeg" alt="Independence Day Event Photo 1" />
+        <img src="indenpence1.jpeg" alt="Independence Day Event Photo 2" />
+      </div>
+    </div>
+
+    <div id="festivals">
+      <h3><span class="lang-en">Festivals</span><span class="lang-hi" style="display:none;">त्योहार</span></h3>
+      <ul>
+        <li><span class="lang-en">Various Cultural and Religious Festivals</span><span class="lang-hi" style="display:none;">विभिन्न सांस्कृतिक और धार्मिक त्योहार</span></li>
+      </ul>
+      <p class="event-desc"><span class="lang-en">Our school celebrates diverse festivals throughout the year fostering cultural harmony and participation.</span><span class="lang-hi" style="display:none;">हमारा विद्यालय साल भर विभिन्न त्योहार मनाता है, जिससे सांस्कृतिक सौहार्द्र और भागीदारी बढ़ती है।</span></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><span class="lang-en">Contact Us</span><span class="lang-hi" style="display:none;">संपर्क करें</span></h2>
+    <p><span class="lang-en">Email: info@gbsno3.edu.in</span><span class="lang-hi" style="display:none;">ईमेल: info@gbsno3.edu.in</span></p>
+    <p><span class="lang-en">Phone: +91 12345 67890</span><span class="lang-hi" style="display:none;">फोन: +91 12345 67890</span></p>
+    <p><span class="lang-en">Address: Government Boys Senior Secondary School, Education Lane, Your City</span><span class="lang-hi" style="display:none;">पता: सरकारी बालक उच्चतर माध्यमिक विद्यालय, एडूकेशन लेन, आपका शहर</span></p>
+  </section>
+</div>
+
+<footer>
+  <p>© 2025 Government Boys Senior Secondary School. All rights reserved.</p>
+</footer>
+
+<script>
+  function setLanguage(lang) {
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+    document.querySelectorAll('.lang-hi').forEach(el => el.style.display = lang === 'hi' ? 'inline' : 'none');
+  }
+  setLanguage('en');
+
+  const sendOTPBtn = document.getElementById('sendOTPBtn');
+  const verifyOTPBtn = document.getElementById('verifyOTPBtn');
+  const setCredentialsBtn = document.getElementById('setCredentialsBtn');
+
+  const mobileInput = document.getElementById('mobileNumber');
+  const otpInput = document.getElementById('otp');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+
+  const loginSection = document.getElementById('login-section');
+  const otpSection = document.getElementById('otp-section');
+  const setCredentialsSection = document.getElementById('set-credentials');
+  const welcomeSection = document.getElementById('welcome-section');
+  const mainContent = document.getElementById('main-content');
+
+  let generatedOTP = null;
+
+  sendOTPBtn.onclick = () => {
+    const mobile = mobileInput.value.trim();
+    if (!/^\d{10}$/.test(mobile)) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+    alert('OTP sent to your mobile number: ' + generatedOTP + ' (Simulated)');
+    loginSection.style.display = 'none';
+    otpSection.style.display = 'block';
+  };
+
+  verifyOTPBtn.onclick = () => {
+    const enteredOTP = otpInput.value.trim();
+    if (enteredOTP === generatedOTP) {
+      alert('OTP verified successfully.');
+      otpSection.style.display = 'none';
+      setCredentialsSection.style.display = 'block';
+    } else {
+      alert('Invalid OTP. Please try again.');
+    }
+  };
+
+  setCredentialsBtn.onclick = () => {
+    if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
+      alert('Please enter both username and password.');
+      return;
+    }
+    alert('Account created successfully! You are logged in.');
+    setCredentialsSection.style.display = 'none';
+    welcomeSection.style.display = 'block';
+    mainContent.style.display = 'block';
+  };
+</script>
+
+</body>
+</html>
